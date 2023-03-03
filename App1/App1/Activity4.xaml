@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Activity4">
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Label x:Name="txtLabel"
+                   Text="Welcome"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   />
+
+            <Slider x:Name="SliderScale"
+                    ThumbColor="Green"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="Maroon"
+                    VerticalOptions="CenterAndExpand"
+                    BindingContext="{x:Reference txtLabel}"
+                    Value="{Binding Scale, Mode=OneWayToSource}"
+                    Maximum="10"
+                    />
+
+            <Slider x:Name="SliderRotate"
+                    BindingContext="{x:Reference txtLabel}"
+                    Maximum="360"
+                    Value="{Binding Rotation,  Mode=OneWayToSource}"/>
+
+            <Slider x:Name="SliderRotateX"
+                    BindingContext="{x:Reference txtLabel}"
+                    Maximum="360"
+                    Value="{Binding RotationX,  Mode=OneWayToSource}"/>
+
+            <Slider x:Name="SliderRotateY"
+                    BindingContext="{x:Reference txtLabel}"
+                    Maximum="360"
+                    Value="{Binding RotationY,  Mode=OneWayToSource}"/>
+
+            <Label BindingContext="{x:Reference SliderScale}"
+                   Text="{Binding Value, StringFormat='The scale is {0:F1}'}"
+                   VerticalTextAlignment="Center"
+                   FontSize="Large"
+                   />
+            
+            <Label BindingContext="{x:Reference SliderRotate}"
+                   Text="{Binding Value, StringFormat='Rotation: {0:F1}'}"
+                   FontSize="Large"
+                   />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
